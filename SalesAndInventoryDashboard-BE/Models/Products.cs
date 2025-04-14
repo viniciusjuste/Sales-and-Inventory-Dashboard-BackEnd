@@ -10,6 +10,5 @@ namespace SalesAndInventoryDashboard_BE.Models
         public string Category { get; set; } = string.Empty;
         public DateTime CreatedDate { get; set; } = DateTime.UtcNow;
         public bool IsActive { get; set; } = true;
-        public bool Active { get; set; } = true;
     }
 }

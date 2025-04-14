@@ -1,0 +1,12 @@
+{
+  "Version": 1,
+  "Hash": "Ez6vpzOoCVshqJwIMvmc1d/z788GR5LHtyaEQy6p9dw=",
+  "Source": "SalesAndInventoryDashboard-BE",
+  "BasePath": "_content/SalesAndInventoryDashboard-BE",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": [],
+  "Endpoints": []
+}
