@@ -34,7 +34,7 @@ public class ProductEndPoints
         {
             try
             {
-                var products = await context.Products.FindAsync();
+                var products = await context.Products.ToListAsync();
                 return Results.Ok(products);
             }
             catch (Exception ex)
@@ -44,6 +44,6 @@ public class ProductEndPoints
             }
         });
 
-        
+
     }
 }
