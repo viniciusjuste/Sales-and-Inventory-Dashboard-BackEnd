@@ -12,9 +12,19 @@ namespace SalesAndInventoryDashboard_BE.Endpoints
                 try
                 {
                     decimal total = 0;
-                    var saleItems = new List<SaleItem>(); // Lista temporária para armazenar os itens da venda
 
-                    foreach (var item in sale.Items)
+                    // Guarda os itens originais enviados na requisição
+                    var originalItems = sale.Items.ToList();
+
+                    // Inicializa a lista para evitar conflito de rastreamento
+                    sale.Items = new List<SaleItem>();
+
+                    // Salva a venda primeiro (sem itens)
+                    context.Sales.Add(sale);
+                    await context.SaveChangesAsync(); // Gera o sale.Id
+
+                    // Agora adiciona os SaleItems corretamente
+                    foreach (var item in originalItems)
                     {
                         var product = await context.Products.FindAsync(item.ProductId);
                         if (product == null || !product.IsActive.GetValueOrDefault())
@@ -27,43 +37,25 @@ namespace SalesAndInventoryDashboard_BE.Endpoints
                             return Results.BadRequest($"Insufficient stock for product {product.Name}.");
                         }
 
-                        // Atualiza o estoque
                         product.StockQuantity -= item.Quantity;
 
-                        // Cria o SaleItem
                         var saleItem = new SaleItem
                         {
+                            SaleId = sale.Id,
                             ProductId = item.ProductId,
-                            ProductName = item.ProductName,
+                            ProductName = product.Name,
                             Quantity = item.Quantity,
-                            UnitPrice = product.Price ?? 0,
+                            UnitPrice = product.Price ?? 0
                         };
 
-                        // Atualiza o total da venda
                         total += saleItem.Quantity * saleItem.UnitPrice;
 
-                        // Adiciona o SaleItem na lista temporária
-                        saleItems.Add(saleItem);
-                    }
-
-                    // Agora, adiciona os SaleItems à coleção e ao contexto
-                    foreach (var saleItem in saleItems)
-                    {
                         context.SaleItems.Add(saleItem);
-                        sale.Items.Add(saleItem); // Aqui, você adiciona os itens à venda
                     }
 
-                    // Atualiza o total da venda
+                    // Atualiza o total e salva tudo
                     sale.Total = total;
-
-                    // Adiciona a venda no contexto
-                    context.Sales.Add(sale);
-                    Console.WriteLine($"Sale ID after Save: {sale.Id}");
-                    Console.WriteLine("Antes de salvar as alterações no banco de dados.");
-
-                    // Salva as alterações no banco de dados
                     await context.SaveChangesAsync();
-                    Console.WriteLine("Depois de salvar as alterações no banco de dados.");
 
                     return Results.Created($"/sales/{sale.Id}", sale);
                 }
