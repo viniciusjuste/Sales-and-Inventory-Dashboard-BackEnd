@@ -1,3 +1,4 @@
+using Microsoft.EntityFrameworkCore;
 using SalesAndInventoryDashboard_BE.Data;
 using SalesAndInventoryDashboard_BE.Models;
 
@@ -43,7 +44,7 @@ namespace SalesAndInventoryDashboard_BE.Endpoints
                         {
                             SaleId = sale.Id,
                             ProductId = item.ProductId,
-                            ProductName = product.Name,
+                            ProductName = product.Name ?? "",
                             Quantity = item.Quantity,
                             UnitPrice = product.Price ?? 0
                         };
@@ -66,6 +67,30 @@ namespace SalesAndInventoryDashboard_BE.Endpoints
                     return Results.Problem("An error occurred while trying to save the sale. Please try again later.");
                 }
             });
+
+            app.MapGet("/sales", async (AppDbContext context) =>
+            {
+                try
+                {
+                    // Busca todas as vendas e inclui os itens relacionados
+                    var sales = await context.Sales.Include(s => s.Items).ToListAsync();
+                    if (sales.Count == 0)
+                    {
+                        return Results.NotFound();
+                    }
+
+                    // Retorna as vendas encontradas, com os itens relacionados
+                    return Results.Ok(sales);
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine($"Error getting sale: {ex.Message}");
+                    Console.WriteLine($"Stack Trace: {ex.StackTrace}");
+                    return Results.Problem("An error occurred while trying to get the sale. Please try again later.");
+                }
+            });
+
+            
         }
     }
 }
