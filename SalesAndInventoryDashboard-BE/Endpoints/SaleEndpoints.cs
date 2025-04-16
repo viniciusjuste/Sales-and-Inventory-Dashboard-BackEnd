@@ -90,7 +90,27 @@ namespace SalesAndInventoryDashboard_BE.Endpoints
                 }
             });
 
-            
+            app.MapGet("/sales/{id}", async (int id, AppDbContext context) =>
+            {
+                try
+                {
+                    // Busca a venda pelo id e inclui os itens relacionados
+                    var sale = await context.Sales.Include(s => s.Items).FirstOrDefaultAsync(s => s.Id == id);
+
+                    if (sale == null)
+                    {
+                        return Results.NotFound();
+                    }
+
+                    return Results.Ok(sale);
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine($"Error getting sale: {ex.Message}");
+                    Console.WriteLine($"Stack Trace: {ex.StackTrace}");
+                    return Results.Problem("An error occurred while trying to get the sale. Please try again later.");
+                }
+            });
         }
     }
 }
