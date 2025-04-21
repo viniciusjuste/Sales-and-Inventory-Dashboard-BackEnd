@@ -111,6 +111,64 @@ namespace SalesAndInventoryDashboard_BE.Endpoints
                     return Results.Problem("An error occurred while trying to get the sale. Please try again later.");
                 }
             });
+
+            app.MapGet("/sales/report", async (AppDbContext context) =>
+            {
+                try
+                {
+                    var sales = await context.Sales
+                        .Include(s => s.Items)
+                        .ToListAsync();
+
+                    if (sales.Count == 0)
+                    {
+                        return Results.NotFound("No sales found.");
+                    }
+
+                    decimal totalRevenue = sales.Sum(s => s.Items.Sum(i => i.UnitPrice * i.Quantity));
+                    int totalSales = sales.Count;
+                    decimal averageTicket = totalSales > 0 ? totalRevenue / totalSales : 0;
+
+                    var bestSellingProduct = sales
+                        .SelectMany(s => s.Items)
+                        .GroupBy(i => i.ProductName)
+                        .OrderByDescending(g => g.Sum(i => i.Quantity))
+                        .Select(g => new
+                        {
+                            Name = g.Key,
+                            Quantity = g.Sum(i => i.Quantity)
+                        })
+                        .FirstOrDefault();
+
+                    var dailySales = sales
+                        .GroupBy(s => s.Date.Date)
+                        .Select(g => new DailySaleDto
+                        {
+                            Date = g.Key,
+                            Value = g.SelectMany(s => s.Items).Sum(i => i.UnitPrice * i.Quantity)
+                        })
+                        .OrderBy(d => d.Date)
+                        .ToList();
+
+                    var report = new SalesReportDto
+                    {
+                        TotalRevenue = totalRevenue,
+                        TotalSales = totalSales,
+                        AverageTicket = averageTicket,
+                        BestSellingProduct = bestSellingProduct?.Name ?? "None",
+                        BestSellingProductQuantity = bestSellingProduct?.Quantity ?? 0,
+                        DailySales = dailySales
+                    };
+
+                    return Results.Ok(report);
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine($"Error getting sale: {ex.Message}");
+                    Console.WriteLine($"Stack Trace: {ex.StackTrace}");
+                    return Results.Problem("An error occurred while trying to get the sales report. Please try again later.");
+                }
+            });
         }
     }
 }
