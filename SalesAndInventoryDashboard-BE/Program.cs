@@ -8,6 +8,17 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddDbContext<AppDbContext>(opt =>
     opt.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
+// Adiciona política de CORS
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("AllowAll", policy =>
+    {
+        policy.AllowAnyOrigin()
+              .AllowAnyMethod()
+              .AllowAnyHeader();
+    });
+});
+
 // Tratamento de exceções detalhado em tempo de desenvolvimento
 builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 
@@ -34,6 +45,9 @@ if (app.Environment.IsDevelopment())
         config.DocExpansion = "list";
     });
 }
+
+// Usa CORS
+app.UseCors("AllowAll");
 
 // Mapeia os endpoints definidos em outras classes
 SaleEndpoints.MapSaleEndpoints(app);
