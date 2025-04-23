@@ -4,9 +4,14 @@ using SalesAndInventoryDashboard_BE.Endpoints;
 
 var builder = WebApplication.CreateBuilder(args);
 
-builder.Services.AddDbContext<AppDbContext>(opt => opt.UseInMemoryDatabase("SalesAndInventoryDashboard"));
+// Configuração do banco de dados com SQL Server
+builder.Services.AddDbContext<AppDbContext>(opt =>
+    opt.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
+
+// Tratamento de exceções detalhado em tempo de desenvolvimento
 builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 
+// Configuração do Swagger (OpenAPI)
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddOpenApiDocument(config =>
 {
@@ -17,6 +22,7 @@ builder.Services.AddOpenApiDocument(config =>
 
 var app = builder.Build();
 
+// Habilita o Swagger se estiver em ambiente de desenvolvimento
 if (app.Environment.IsDevelopment())
 {
     app.UseOpenApi();
@@ -29,6 +35,7 @@ if (app.Environment.IsDevelopment())
     });
 }
 
+// Mapeia os endpoints definidos em outras classes
 SaleEndpoints.MapSaleEndpoints(app);
 ProductEndPoints.MapProductEndpoints(app);
 ReportEndpoints.MapReportEndpoints(app);
