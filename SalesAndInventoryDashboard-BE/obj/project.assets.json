@@ -5540,31 +5540,24 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\User\\.nuget\\packages\\": {},
-    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
+    "C:\\Users\\RG Informatica\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\User\\Documents\\Projetos Pessoais\\Sales-and-Inventory-Dashboard-BackEnd\\SalesAndInventoryDashboard-BE\\SalesAndInventoryDashboard-BE.csproj",
+      "projectUniqueName": "C:\\Users\\RG Informatica\\Documents\\Projetos Pessoais\\Sales-and-Inventory-Dashboard-BackEnd\\SalesAndInventoryDashboard-BE\\SalesAndInventoryDashboard-BE.csproj",
       "projectName": "SalesAndInventoryDashboard-BE",
-      "projectPath": "C:\\Users\\User\\Documents\\Projetos Pessoais\\Sales-and-Inventory-Dashboard-BackEnd\\SalesAndInventoryDashboard-BE\\SalesAndInventoryDashboard-BE.csproj",
-      "packagesPath": "C:\\Users\\User\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\User\\Documents\\Projetos Pessoais\\Sales-and-Inventory-Dashboard-BackEnd\\SalesAndInventoryDashboard-BE\\obj\\",
+      "projectPath": "C:\\Users\\RG Informatica\\Documents\\Projetos Pessoais\\Sales-and-Inventory-Dashboard-BackEnd\\SalesAndInventoryDashboard-BE\\SalesAndInventoryDashboard-BE.csproj",
+      "packagesPath": "C:\\Users\\RG Informatica\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\RG Informatica\\Documents\\Projetos Pessoais\\Sales-and-Inventory-Dashboard-BackEnd\\SalesAndInventoryDashboard-BE\\obj\\",
       "projectStyle": "PackageReference",
-      "fallbackFolders": [
-        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-      ],
       "configFilePaths": [
-        "C:\\Users\\User\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        "C:\\Users\\RG Informatica\\AppData\\Roaming\\NuGet\\NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "net9.0"
       ],
       "sources": {
-        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
@@ -5631,7 +5624,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.201/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.203/PortableRuntimeIdentifierGraph.json"
       }
     }
   }
