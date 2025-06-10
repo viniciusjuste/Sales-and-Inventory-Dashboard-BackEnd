@@ -45,21 +45,23 @@ namespace SalesAndInventoryDashboard_BE.Endpoints
             });
 
             app.MapGet("/products/name", async (string name, AppDbContext context) =>
- {
-     try
-     {
-         var products = await context.Products
-             .Where(p => p.IsActive == true && EF.Functions.Like(p.Name, $"%{name}%"))
-             .ToListAsync();
-         return Results.Ok(products);
-     }
-     catch (Exception ex)
-     {
-         Console.WriteLine($"Error getting products by name: {ex.Message}");
-         return Results.Problem("An error occurred while trying to get the products by name. Please try again later.");
-     }
- });
+            {
+                try
+                {
+                    var products = await context.Products
+                        .Where(p => p.IsActive == true &&
+                                    p.Name != null &&
+                                    p.Name.ToLower() == name.ToLower())
+                        .ToListAsync();
 
+                    return Results.Ok(products);
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine($"Error getting products by name: {ex.Message}");
+                    return Results.Problem("An error occurred while trying to get the products by name. Please try again later.");
+                }
+         });
 
             app.MapPatch("/products/{id}", async (int id, Product product, AppDbContext context) =>
             {
