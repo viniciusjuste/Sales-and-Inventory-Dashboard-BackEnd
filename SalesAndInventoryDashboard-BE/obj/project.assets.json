@@ -5545,11 +5545,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\RG Informatica\\Documents\\Projetos Pessoais\\Sales-and-Inventory-Dashboard-BackEnd\\SalesAndInventoryDashboard-BE\\SalesAndInventoryDashboard-BE.csproj",
+      "projectUniqueName": "C:\\Users\\RG Informatica\\Documents\\_Projetos Pessoais\\Sales-and-Inventory-Dashboard-BackEnd\\SalesAndInventoryDashboard-BE\\SalesAndInventoryDashboard-BE.csproj",
       "projectName": "SalesAndInventoryDashboard-BE",
-      "projectPath": "C:\\Users\\RG Informatica\\Documents\\Projetos Pessoais\\Sales-and-Inventory-Dashboard-BackEnd\\SalesAndInventoryDashboard-BE\\SalesAndInventoryDashboard-BE.csproj",
+      "projectPath": "C:\\Users\\RG Informatica\\Documents\\_Projetos Pessoais\\Sales-and-Inventory-Dashboard-BackEnd\\SalesAndInventoryDashboard-BE\\SalesAndInventoryDashboard-BE.csproj",
       "packagesPath": "C:\\Users\\RG Informatica\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\RG Informatica\\Documents\\Projetos Pessoais\\Sales-and-Inventory-Dashboard-BackEnd\\SalesAndInventoryDashboard-BE\\obj\\",
+      "outputPath": "C:\\Users\\RG Informatica\\Documents\\_Projetos Pessoais\\Sales-and-Inventory-Dashboard-BackEnd\\SalesAndInventoryDashboard-BE\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\RG Informatica\\AppData\\Roaming\\NuGet\\NuGet.Config"
