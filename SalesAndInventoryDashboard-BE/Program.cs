@@ -53,5 +53,7 @@ app.UseCors("AllowAll");
 SaleEndpoints.MapSaleEndpoints(app);
 ProductEndPoints.MapProductEndpoints(app);
 ReportEndpoints.MapReportEndpoints(app);
+RegisterUser.MapRegisterUserEndpoint(app);
+LoginUser.MapLoginUserEndpoint(app);
 
 app.Run();
