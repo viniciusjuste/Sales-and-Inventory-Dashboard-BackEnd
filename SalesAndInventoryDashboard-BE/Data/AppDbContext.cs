@@ -12,6 +12,8 @@ namespace SalesAndInventoryDashboard_BE.Data
         public DbSet<Sale> Sales => Set<Sale>();
         public DbSet<SaleItem> SaleItems => Set<SaleItem>();
 
+        public DbSet<User> Users => Set<User>();
+
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             // Configura chave composta: cada produto numa venda é único
