@@ -28,7 +28,8 @@ namespace SalesAndInventoryDashboard_BE.Endpoints
                     Console.WriteLine($"Error saving product: {ex.Message}");
                     return Results.Problem("An error occurred while trying to save the product. Please try again later.");
                 }
-            });
+            }).RequireAuthorization();
+
 
             app.MapGet("/products", async (AppDbContext context) =>
             {
@@ -42,7 +43,7 @@ namespace SalesAndInventoryDashboard_BE.Endpoints
                     Console.WriteLine($"Error getting products: {ex.Message}");
                     return Results.Problem("An error occurred while trying to get the products. Please try again later.");
                 }
-            });
+            }).RequireAuthorization();
 
             app.MapGet("/products/name", async (string name, AppDbContext context) =>
             {
@@ -61,7 +62,7 @@ namespace SalesAndInventoryDashboard_BE.Endpoints
                     Console.WriteLine($"Error getting products by name: {ex.Message}");
                     return Results.Problem("An error occurred while trying to get the products by name. Please try again later.");
                 }
-         });
+         }).RequireAuthorization();
 
             app.MapPatch("/products/{id}", async (int id, Product product, AppDbContext context) =>
             {
@@ -101,7 +102,7 @@ namespace SalesAndInventoryDashboard_BE.Endpoints
                     Console.WriteLine($"Error updating product: {ex.Message}");
                     return Results.Problem("An error occurred while trying to update the product. Please try again later.");
                 }
-            });
+            }).RequireAuthorization();
 
             app.MapDelete("/products/{id}", async (int id, AppDbContext context) =>
             {
@@ -123,7 +124,7 @@ namespace SalesAndInventoryDashboard_BE.Endpoints
                     Console.WriteLine($"Error deleting product: {ex.Message}");
                     return Results.Problem("An error occurred while trying to delete the product. Please try again later.");
                 }
-            });
+            }).RequireAuthorization();
         }
     }
 }

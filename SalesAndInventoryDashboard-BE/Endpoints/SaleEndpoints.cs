@@ -66,7 +66,7 @@ namespace SalesAndInventoryDashboard_BE.Endpoints
                     Console.WriteLine($"Stack Trace: {ex.StackTrace}");
                     return Results.Problem("An error occurred while trying to save the sale. Please try again later.");
                 }
-            });
+            }).RequireAuthorization();
 
             app.MapGet("/sales", async (AppDbContext context) =>
             {
@@ -88,7 +88,7 @@ namespace SalesAndInventoryDashboard_BE.Endpoints
                     Console.WriteLine($"Stack Trace: {ex.StackTrace}");
                     return Results.Problem("An error occurred while trying to get the sale. Please try again later.");
                 }
-            });
+            }).RequireAuthorization();
 
             app.MapGet("/sales/{id}", async (int id, AppDbContext context) =>
             {
@@ -110,7 +110,7 @@ namespace SalesAndInventoryDashboard_BE.Endpoints
                     Console.WriteLine($"Stack Trace: {ex.StackTrace}");
                     return Results.Problem("An error occurred while trying to get the sale. Please try again later.");
                 }
-            });
+            }).RequireAuthorization();
 
             app.MapGet("/sales/report", async (AppDbContext context) =>
             {
@@ -168,7 +168,7 @@ namespace SalesAndInventoryDashboard_BE.Endpoints
                     Console.WriteLine($"Stack Trace: {ex.StackTrace}");
                     return Results.Problem("An error occurred while trying to get the sales report. Please try again later.");
                 }
-            });
+            }).RequireAuthorization();
         }
     }
 }

@@ -531,3 +531,8 @@ c:\Users\RG Informatica\Documents\_Projetos Pessoais\Sales-and-Inventory-Dashboa
 c:\Users\RG Informatica\Documents\_Projetos Pessoais\Sales-and-Inventory-Dashboard-BackEnd\SalesAndInventoryDashboard-BE\obj\Debug\net9.0\SalesAndInventoryDashboard-BE.pdb
 C:\Users\RG Informatica\Documents\_Projetos Pessoais\Sales-and-Inventory-Dashboard-BackEnd\SalesAndInventoryDashboard-BE\obj\Debug\net9.0\SalesAndInventoryDashboard-BE.genruntimeconfig.cache
 C:\Users\RG Informatica\Documents\_Projetos Pessoais\Sales-and-Inventory-Dashboard-BackEnd\SalesAndInventoryDashboard-BE\obj\Debug\net9.0\ref\SalesAndInventoryDashboard-BE.dll
+c:\Users\RG Informatica\Documents\_Projetos Pessoais\Sales-and-Inventory-Dashboard-BackEnd\SalesAndInventoryDashboard-BE\bin\Debug\net9.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
+c:\Users\RG Informatica\Documents\_Projetos Pessoais\Sales-and-Inventory-Dashboard-BackEnd\SalesAndInventoryDashboard-BE\bin\Debug\net9.0\Microsoft.OpenApi.dll
+c:\Users\RG Informatica\Documents\_Projetos Pessoais\Sales-and-Inventory-Dashboard-BackEnd\SalesAndInventoryDashboard-BE\bin\Debug\net9.0\Swashbuckle.AspNetCore.Swagger.dll
+c:\Users\RG Informatica\Documents\_Projetos Pessoais\Sales-and-Inventory-Dashboard-BackEnd\SalesAndInventoryDashboard-BE\bin\Debug\net9.0\Swashbuckle.AspNetCore.SwaggerGen.dll
+c:\Users\RG Informatica\Documents\_Projetos Pessoais\Sales-and-Inventory-Dashboard-BackEnd\SalesAndInventoryDashboard-BE\bin\Debug\net9.0\Swashbuckle.AspNetCore.SwaggerUI.dll

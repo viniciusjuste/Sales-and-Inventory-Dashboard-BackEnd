@@ -10,10 +10,11 @@
 using System;
 using System.Reflection;
 
+[assembly: Microsoft.Extensions.Configuration.UserSecrets.UserSecretsIdAttribute("a103142c-828c-4b9d-b9e8-f3fc7c692e97")]
 [assembly: System.Reflection.AssemblyCompanyAttribute("SalesAndInventoryDashboard-BE")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+c864a241432c93f4fac1babda32ae00ef789c27d")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+63193c3814df97744a343b83099ee7fa89b454e3")]
 [assembly: System.Reflection.AssemblyProductAttribute("SalesAndInventoryDashboard-BE")]
 [assembly: System.Reflection.AssemblyTitleAttribute("SalesAndInventoryDashboard-BE")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
